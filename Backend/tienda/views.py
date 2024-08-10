@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
 # Create your views here.
-from rest_framework import viewsets
-from .models import Revista
-from .serializers import RevistaSerializer
+from rest_framework import viewsets, generics
+from .models import *
+from .serializers import *
 
 
 class RevistaViewSet(viewsets.ModelViewSet):
