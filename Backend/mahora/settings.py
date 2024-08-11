@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
+import dj_database_url
+
 
 from pathlib import Path
 
@@ -81,15 +84,22 @@ WSGI_APPLICATION = 'mahora.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'root',  # El nombre de la base de datos que creaste
+#         'USER': 'root',                  # El usuario que creaste
+#         'PASSWORD': 'root',           # La contraseña que asignaste al usuario
+#         'HOST': 'postgres',                   # Si PostgreSQL está en tu máquina local
+#         'PORT': '5432',                        # El puerto por defecto de PostgreSQL
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mahora',  # El nombre de la base de datos que creaste
-        'USER': 'postgres',                  # El usuario que creaste
-        'PASSWORD': 'password',           # La contraseña que asignaste al usuario
-        'HOST': 'localhost',                   # Si PostgreSQL está en tu máquina local
-        'PORT': '5432',                        # El puerto por defecto de PostgreSQL
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+    )
 }
 
 
