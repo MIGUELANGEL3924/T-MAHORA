@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import BookCard from "../../Components/BookCard";
 import Layout from "../../Components/Layout";
+import DetalleProducto from '../../Components/DetalleProducto'
+
 
 const HomePage = () => {
   const [books, setBooks] = useState([]);
@@ -27,6 +29,7 @@ const HomePage = () => {
           />
         ))}
       </div>
+      <DetalleProducto />
     </Layout>
   );
 };
